@@ -1,0 +1,44 @@
+﻿CREATE OR REPLACE SOAP WEBSERVICE customerws
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    I18N  = au_cst
+    DATETYPEMAPPING DATE
+    NOWRAPARRAYS
+    RAISEFAULTONIDU
+    DONOTAPPLYOUTPUTXSLTTOERRORS
+    AUTHENTICATION (WSS BASIC VDP )
+    OUTPUT 
+        ( STYLE RPC  )
+    OPERATION 'getClientById' (
+        TYPE SELECT
+        SCHEMA VIEW i_client_info
+        VQL = 'SELECT client_id, full_name, client_type, full_address, phone, billing_due_date, balance FROM i_client_info ^ExecuteIfIsNotNull("WHERE ",@WHEREEXPRESSION,"") CONTEXT (''i18n'' = ''au_cst''^ExecuteIfIsNotNull(", ",@VERBOSEERRORS,"")^ExecuteIfIsNotNull(", ",@CONTEXTEXPRESSION,""))'
+        INPUTS 'getClientById' (
+            'CLIENT_ID' client_id:'text' '=' 
+        )
+        OUTPUT 
+            'I_CLIENT_INFOReturn': Array of ( 'I_CLIENT_INFOReturnRow': Register of (
+                client_id : 'text',
+                full_name : 'text',
+                client_type : 'text',
+                full_address : 'text',
+                phone : 'text',
+                billing_due_date : 'localdate',
+                balance : 'decimal'
+            ) (
+                    '/balance'='BALANCE',
+                    '/billing_due_date'='BILLING_DUE_DATE',
+                    '/client_id'='CLIENT_ID',
+                    '/client_type'='CLIENT_TYPE',
+                    '/full_address'='FULL_ADDRESS',
+                    '/full_name'='FULL_NAME',
+                    '/phone'='PHONE'))
+    )
+    FOLDER = '/2 - data services/soap';
+

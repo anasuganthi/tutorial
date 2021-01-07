@@ -1,0 +1,33 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC prospect
+    DATASOURCENAME=hive_ds
+    SCHEMANAME='${databases.tutorial.views.jdbc.prospect.SCHEMANAME}' ESCAPE
+    RELATIONNAME='prospect' 
+    OUTPUTSCHEMA (
+        name = 'name' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE,
+        last_name = 'last_name' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE,
+        client_type = 'client_type' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  SORTABLE,
+        area_code = 'area_code' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE prospect I18N au_cst (
+        name:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = ''),
+        last_name:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = ''),
+        client_type:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        area_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD prospect(
+        I18N au_cst
+        CONSTRAINTS (
+             ADD name (any) OPT ANY
+             ADD last_name (any) OPT ANY
+             ADD client_type (any) OPT ANY
+             ADD area_code (any) OPT ANY
+        )
+        OUTPUTLIST (area_code, client_type, last_name, name
+        )
+        WRAPPER (jdbc prospect)
+    );
+

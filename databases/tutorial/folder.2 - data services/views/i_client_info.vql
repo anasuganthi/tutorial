@@ -1,0 +1,15 @@
+﻿CREATE OR REPLACE INTERFACE VIEW i_client_info (
+        client_id:text,
+        full_name:text,
+        client_type:text,
+        full_address:text,
+        phone:text,
+        billing_due_date:localdate,
+        balance:decimal
+    )
+    SET IMPLEMENTATION client_info_impl
+    FOLDER = '/2 - data services';
+
+ALTER VIEW i_client_info
+ LAYOUT (client_info_impl = [470, 20, 210, 166]);
+

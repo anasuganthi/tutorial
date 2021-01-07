@@ -1,0 +1,34 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC hive_ds
+    FOLDER = '/3 - big data'
+    DRIVERCLASSNAME = 'com.cloudera.hive.jdbc41.HS2Driver'
+    DATABASEURI = '${databases.tutorial.folder.3 - big data.datasources.jdbc.hive_ds.DATABASEURI}'
+    USERNAME = '${databases.tutorial.folder.3 - big data.datasources.jdbc.hive_ds.USERNAME}'
+    USERPASSWORD = '${databases.tutorial.folder.3 - big data.datasources.jdbc.hive_ds.USERPASSWORD}' ${databases.tutorial.folder.3 - big data.datasources.jdbc.hive_ds.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'hive-1.1.0-cloudera'
+    DATABASENAME = 'hive'
+    DATABASEVERSION = '1_1_0'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'select 1'
+    INITIALSIZE = 4
+    MAXIDLE = 0
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 0
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = 0
+    NUMTESTPEREVICTION = 0
+    MINEVICTABLETIME = 0
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = 0
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    )
+    PROCESSING_UNITS = 8
+    CPUS_PER_PROCESSING_UNIT = 8
+    SOURCECONFIGURATION (
+        delegate_offset_restriction = 'FETCH_NO_ORDER_BY'
+    );
+

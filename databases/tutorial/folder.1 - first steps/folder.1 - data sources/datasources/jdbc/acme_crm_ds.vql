@@ -1,0 +1,34 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC acme_crm_ds
+    FOLDER = '/1 - first steps/1 - data sources'
+    DRIVERCLASSNAME = 'com.mysql.jdbc.Driver'
+    DATABASEURI = '${databases.tutorial.folder.1 - first steps.folder.1 - data sources.datasources.jdbc.acme_crm_ds.DATABASEURI}'
+    USERNAME = '${databases.tutorial.folder.1 - first steps.folder.1 - data sources.datasources.jdbc.acme_crm_ds.USERNAME}'
+    USERPASSWORD = '${databases.tutorial.folder.1 - first steps.folder.1 - data sources.datasources.jdbc.acme_crm_ds.USERPASSWORD}' ${databases.tutorial.folder.1 - first steps.folder.1 - data sources.datasources.jdbc.acme_crm_ds.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'mysql-5'
+    DATABASENAME = 'mysql'
+    DATABASEVERSION = '5'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'Select 1'
+    INITIALSIZE = 4
+    MAXIDLE = 0
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 0
+    TESTONBORROW = false
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = 0
+    NUMTESTPEREVICTION = 0
+    MINEVICTABLETIME = 0
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = 0
+    PROPERTIES ('vdp.streamRows'='yes')
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+        USEEXTERNALTABLES ( 
+            ONMOVEREAD = false,
+            ONMOVEWRITE = true
+        )
+    );
+

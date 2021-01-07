@@ -1,0 +1,15 @@
+﻿/databases/tutorial/folder.2 - data services/2 - data services.vql
+/databases/tutorial/folder.1 - first steps/1 - first steps.vql
+/databases/tutorial/folder.1 - first steps/folder.3 - derived views/3 - derived views.vql
+/databases/tutorial/folder.1 - first steps/folder.2 - base views/2 - base views.vql
+/databases/tutorial/folder.1 - first steps/folder.1 - data sources/1 - data sources.vql
+/databases/tutorial/folder.1 - first steps/folder.1 - data sources/datasources/jdbc/acme_crm_ds.vql
+/databases/tutorial/folder.1 - first steps/folder.2 - base views/views/client.vql
+/databases/tutorial/folder.1 - first steps/folder.2 - base views/views/address.vql
+/databases/tutorial/folder.1 - first steps/folder.2 - base views/views/client_type.vql
+/databases/tutorial/folder.1 - first steps/folder.3 - derived views/views/personal_data_crm.vql
+/databases/tutorial/folder.1 - first steps/folder.1 - data sources/datasources/ws/soap_billing_ds.vql
+/databases/tutorial/folder.1 - first steps/folder.2 - base views/views/get_bill_by_customer_id.vql
+/databases/tutorial/folder.1 - first steps/folder.3 - derived views/views/billing_information.vql
+/databases/tutorial/folder.1 - first steps/folder.3 - derived views/views/client_with_bills.vql
+/databases/tutorial/folder.1 - first steps/folder.3 - derived views/views/client_info_impl.vql

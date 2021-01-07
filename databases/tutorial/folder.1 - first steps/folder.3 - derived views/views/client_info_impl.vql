@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW client_info_impl FOLDER = '/1 - first steps/3 - derived views' AS SELECT client_with_bills.client_id AS client_id, client_with_bills.client_type AS client_type, client_with_bills.primary_phone AS phone, to_localdate('yyyy-MM-dd HH:mm:ss', client_with_bills.due_date) AS billing_due_date, cast('decimal', client_with_bills.balance) AS balance, concat(client_with_bills.name, ' ', client_with_bills.surname) AS full_name, concat(client_with_bills.street, ', ', client_with_bills.city, ', ', client_with_bills.zip, ', ', client_with_bills.state) AS full_address FROM client_with_bills;
+
+ALTER VIEW client_info_impl
+ LAYOUT (client_with_bills = [20, 20, 200, 486]);
+

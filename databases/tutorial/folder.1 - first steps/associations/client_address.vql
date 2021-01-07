@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION client_address REFERENTIAL CONSTRAINT 
+FOLDER = '/1 - first steps'
+    ENDPOINT address client PRINCIPAL (0,1)
+    ENDPOINT belongs_to_client address (0,1)
+    ADD MAPPING client_id=client_fid;
+
+ALTER ASSOCIATION client_address
+ LAYOUT (client = [1, 36, 200, 200], address = [548, 132, 200, 200]);
+

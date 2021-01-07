@@ -1,0 +1,9 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE WS soap_billing_ds
+    FOLDER = '/1 - first steps/1 - data sources'
+    WSDLURI = '${databases.tutorial.folder.1 - first steps.folder.1 - data sources.datasources.ws.soap_billing_ds.WSDLURI}'
+    MAXCONNECTIONS 50
+    CONNECTIONPOOLTIMEOUT 0
+    AUTHENTICATION OFF
+    PROXY OFF;
+

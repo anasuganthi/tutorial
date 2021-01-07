@@ -1,0 +1,4 @@
+﻿UNDEPLOY IF EXISTS WEBSERVICE customerws;
+
+DEPLOY WEBSERVICE customerws;
+
